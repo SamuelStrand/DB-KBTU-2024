@@ -2,4 +2,4 @@ CREATE DATABASE lab1;
 
 CREATE TABLE users;
 
-INSERT INTO users
+INSERT INTO users values 
