@@ -13,6 +13,10 @@ ALTER COLUMN is_admin TYPE BOOLEAN
 USING is_admin::boolean;
 
 ALTER TABLE users
+ALTER COLUMN is_admin
+SET DEFAULT false;
+
+ALTER TABLE users
 ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 CREATE TABLE tasks (
