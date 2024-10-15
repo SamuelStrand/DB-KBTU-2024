@@ -1,8 +1,6 @@
 --1
 CREATE DATABASE lab5;
 
-DROP TABLE customers;
-
 --2
 CREATE TABLE salesmans(
     salesman_id INTEGER PRIMARY KEY,
