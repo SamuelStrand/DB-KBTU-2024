@@ -1,5 +1,5 @@
 --1
-CREATE DATABASE lab5;
+create table lab5;
 
 --2
 CREATE TABLE salesmans(
@@ -9,6 +9,7 @@ CREATE TABLE salesmans(
     commission REAL
 );
 
+
 CREATE TABLE customers(
     customer_id INTEGER PRIMARY KEY,
     cust_name VARCHAR(255),
@@ -17,6 +18,7 @@ CREATE TABLE customers(
     salesman_id INTEGER,
     FOREIGN KEY (salesman_id) REFERENCES salesmans(salesman_id)
 );
+
 
 CREATE TABLE orders(
     ord_no INTEGER PRIMARY KEY,
@@ -54,49 +56,43 @@ VALUES (70001, 150.5, '2012-10-05', 3005, 5002),
        (70005, 2400.6, '2012-07-27', 3007, 5001),
        (70008, 5760, '2012-09-10', 3002, 5001);
 
---3
-SELECT sum(purch_amt) FROM orders;
+select * from salesmans;
+select * from customers;
+select * from orders;
 
---4
-SELECT avg(purch_amt) FROM orders;
+-- 3
+select sum(purch_amt) from orders;
 
---5
-SELECT count(cust_name) FROM customers;
+-- 4
+select avg(purch_amt) from orders;
 
---6
-SELECT min(purch_amt) FROM orders;
+-- 5
+select count(cust_name) from customers;
 
---7
-SELECT * FROM customers
- WHERE cust_name LIKE '%b'
-     AND customer_id IS NOT NULL
-     AND cust_name IS NOT NULL
-     AND city IS NOT NULL
-     and grade IS NOT NULL
-     AND salesman_id IS NOT NULL;
+-- 6
+select min(purch_amt) from orders;
 
---8
-SELECT * FROM orders
- WHERE customer_id IN (SELECT customer_id FROM customers
-                                          WHERE city = 'New York');
+-- 7
+select cust_name from customers
+where cust_name like '%b';
 
---9
-SELECT * FROM customers
- WHERE customer_id IN(
-     SELECT customer_id FROM orders
-         WHERE purch_amt > 10)
-     AND customer_id IS NOT NULL
-     AND cust_name IS NOT NULL
-     AND city IS NOT NULL
-     and grade IS NOT NULL
-     AND salesman_id IS NOT NULL;
+-- 8
+select ord_no from orders
+where customer_id in (select customer_id from customers where city = 'New York');
 
---10
-SELECT sum(grade) FROM customers;
+-- 9
+select * from customers
+where customer_id in (select customer_id from orders where purch_amt > 10);
 
---11
-SELECT * FROM customers
- WHERE cust_name is NOT NULL;
+-- 10
+select sum(grade) from customers;
 
---12
-SELECT max(grade) FROM customers;
+-- 11
+select * from customers
+where cust_name is not null;
+
+-- 12
+select max(grade) from customers;
+
+
+
