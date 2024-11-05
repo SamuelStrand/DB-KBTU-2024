@@ -1,5 +1,5 @@
 --1
-create table lab5;
+CREATE DATABASE lab5;
 
 --2
 CREATE TABLE salesmans(
@@ -67,14 +67,15 @@ select sum(purch_amt) from orders;
 select avg(purch_amt) from orders;
 
 -- 5
-select count(cust_name) from customers;
+select count(cust_name) from customers
+where cust_name is not null;
 
 -- 6
 select min(purch_amt) from orders;
 
 -- 7
 select cust_name from customers
-where cust_name like '%b';
+where cust_name like 'q%';
 
 -- 8
 select ord_no from orders

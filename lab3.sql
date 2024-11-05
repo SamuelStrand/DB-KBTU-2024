@@ -54,7 +54,7 @@ select  name from employees
 where city = 'Almaty'
 union
 select name from customers
-where city = 'Almaty'
+where city = 'Almaty';
 
 -- 15
 select name, budget, code from departments
@@ -67,9 +67,9 @@ set budget = budget * 0.9
 where budget = (select min(budget) from departments);
 
 -- 17
-update departments
-set name = 'IT'
-where name = 'Research';
+update employees
+set department = 14
+where department = 77
 
 -- 18
 delete from departments

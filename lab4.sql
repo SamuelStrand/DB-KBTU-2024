@@ -36,6 +36,7 @@ INSERT INTO boxes
         ('P2T6', 'Scissors', 150, 2),
         ('TU55', 'Papers', 90, 5);
 
+
 --4
 SELECT * FROM warehouses;
 
@@ -51,8 +52,9 @@ SELECT warehouse, count(*)
  FROM boxes
   GROUP BY warehouse;
 
+select * from boxes;
 --8
-SELECT warehouse, count(*)
+SELECT warehouse, count(*), value
  FROM boxes
   GROUP BY warehouse
   HAVING count(*) > 2;
@@ -79,6 +81,6 @@ DELETE FROM boxes WHERE value < 150
 --13
 DELETE FROM boxes
  WHERE warehouse IN (SELECT code FROM warehouses
-                                 WHERE location = 'New York')
+                                 WHERE location =    'New York')
 RETURNING *;
 
