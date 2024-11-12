@@ -37,36 +37,31 @@ VALUES ('Dep1', 10000, 1),
        ('Dep3', 35000, 2);
 
 INSERT INTO employees (first_name, last_name, email, phone_number, salary, department_id)
-VALUES ('Sasha', 'Shabalina', 'a_shabalina', '877777777', 1000000, 1),
-       ('Lila', 'Smith', 'lilasm', '873737', 800000, 2),
-       ('Nina', 'Li', 'liii', '848747', 3000000, 2);
+VALUES ('Emil', 'Kalimullin', 'e_kalimullin', '877777777', 1000000, 1),
+       ('Bob', 'Smith', 'lilasm', '873737', 800000, 2),
+       ('Sam', 'Some', 'sam', '848747', 3000000, 2);
 
 
 --3
-EXPLAIN ANALYZE
 SELECT e.first_name, e.last_name, e.department_id, d.department_name
 FROM employees e JOIN departments d ON e.department_id = d.department_id;
 
 --4
-EXPLAIN ANALYZE
 SELECT e.first_name, e.last_name, e.department_id, d.department_name
 FROM employees e JOIN departments d ON e.department_id = d.department_id
 WHERE d.department_id in (80, 40);
 
-CREATE INDEX department_id_index on departments(department_id);
-DROP INDEX department_id_index;
 
 --5
-EXPLAIN ANALYZE
 SELECT e.first_name, e.last_name, d.department_name, l.city, l.state_province
 FROM employees e
     JOIN departments d ON e.department_id = d.department_id
     JOIN locations l ON d.location_id = l.location_id;
 
 --6
-SELECT d.department_id, department_name FROM departments d
-LEFT JOIN employees e ON d.department_id = e.department_id
-GROUP BY (d.department_id, d.department_name);
+SELECT d.department_id, department_name
+FROM departments d
+LEFT JOIN employees e ON d.department_id = e.department_id;
 
 --7
 SELECT first_name, last_name, e.department_id, d.department_name
