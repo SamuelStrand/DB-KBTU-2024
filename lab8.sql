@@ -77,18 +77,22 @@ GRANT ALL PRIVILEGES ON order_by_name TO junior_dev;
 CREATE VIEW high_grade_customers AS
     SELECT * FROM customers
              WHERE grade = (SELECT max(grade) FROM customers);
+
 SELECT * FROM high_grade_customers;
 
 GRANT SELECT ON high_grade_customers TO junior_dev;
 
 --7
 CREATE VIEW salesmans_in_cities AS
-    SELECT count(*), city FROM salesman GROUP BY city;
+    SELECT count(*), city
+    FROM salesman
+    GROUP BY city;
 SELECT * FROM salesmans_in_cities;
 
 --8
 CREATE VIEW salesman_with_multiple_cust AS
-    SELECT s.salesman_id, s.name, count(c.salesman_id) FROM salesman s
+    SELECT s.salesman_id, s.name, count(c.salesman_id)
+    FROM salesman s
     JOIN customers c on s.salesman_id = c.salesman_id
     GROUP BY s.salesman_id, s.name
 HAVING count(c.customer_id) > 1;
