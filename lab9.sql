@@ -59,6 +59,7 @@ begin
 end;
 $$ language plpgsql;
 
+
 --  5
 create or replace function list_products(category text)
 returns table(product_id integer, product_name text, product_price numeric) as $$
@@ -74,6 +75,8 @@ begin
     return salary * 0.1;
 end;
 $$ language plpgsql;
+
+select * from calculate_bonus(1000);
 
 create or replace function update_salary(emp_id integer)
 returns void as $$
@@ -104,6 +107,8 @@ begin
     return final_result;
 end;
 $$ language plpgsql;
+
+select * from complex_calculation()
 
 
 
